@@ -69,6 +69,7 @@ ul li {
     padding: 12px 24px;
     user-select: none;
     cursor: pointer;
+    position: relative;
 }
 
 ul li::before {
@@ -80,7 +81,24 @@ ul li::before {
 }
 
 ul li.checked {
+    text-decoration: line-through;
+}
+
+ul li span {
+    position: absolute; 
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    font-size: 22px;
+    color: var(--first-color);
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+ul li span:hover {
     background: var(--first-color);
     color: white;
-    text-decoration: line-through;
 }
