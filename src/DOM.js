@@ -1,4 +1,4 @@
-import { addTask, showTask } from './taskManager.js';
+import { addTask, showTask, renderTasks } from './taskManager.js';
 
 export function setupUI() {
     const titleBox = document.getElementById("title-box");
@@ -44,4 +44,27 @@ export function setupUI() {
             }
         }
     }, false);
+
+    // Add here
+    const searchCategoryBox = document.getElementById("search-category-box");
+    const searchDateBox = document.getElementById("search-date-box");
+    const searchPriorityBox = document.getElementById("search-priority-box");
+    const searchButton = document.getElementById("search-button");
+
+    searchButton.addEventListener("click", () => {
+        const category = searchCategoryBox.value.trim();
+        const date = searchDateBox.value;
+        const priority = searchPriorityBox.value;
+
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+        const filtered = tasks.filter(task => {
+            const categoryMatch = category === '' || category === '?' || task.category === category;
+            const dateMatch = date === '' || task.date === date;
+            const priorityMatch = priority === '?' || task.priority === priority;
+            return categoryMatch && dateMatch && priorityMatch;
+        });
+
+        renderTasks(filtered);
+    });
 }

@@ -32,10 +32,14 @@ export function saveTask(task) {
 }
 
 export function showTask() {
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    renderTasks(tasks);
+}
+
+export function renderTasks(tasks) {
     const listContainer = document.getElementById("list-container");
     listContainer.innerHTML = '';
 
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     tasks.forEach(task => {
         const li = document.createElement("li");
         const taskContent = `${task.title} (${task.category}/${task.date}/${task.priority})`;
