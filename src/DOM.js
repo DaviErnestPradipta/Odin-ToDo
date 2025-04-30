@@ -1,13 +1,19 @@
 import { addTask, saveTask } from './taskManager.js';
 
 export function setupUI() {
-    const inputBox = document.getElementById("input-box");
-    const listContainer = document.getElementById("list-container");
+    const titleBox = document.getElementById("title-box");
+    const categoryBox = document.getElementById("category-box");
+    const dateBox = document.getElementById("date-box");
     const addButton = document.querySelector("button");
+    const descriptionBox = document.getElementById("category-box");
+    const listContainer = document.getElementById("list-container");
+    
 
-    addButton.addEventListener("click", () => addTask(inputBox, listContainer));
-    inputBox.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") addTask(inputBox, listContainer);
+    addButton.addEventListener("click", () => 
+        addTask(titleBox, categoryBox, dateBox, descriptionBox, listContainer));
+    titleBox.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") 
+            addTask(titleBox, categoryBox, dateBox, descriptionBox, listContainer);
     });
 
     listContainer.addEventListener("click", function(e) {
