@@ -1,5 +1,4 @@
-export function addTask(titleBox, categoryBox, dateBox, priorityBox, 
-    descriptionBox, listContainer) {
+export function addTask(titleBox, categoryBox, dateBox, priorityBox, descriptionBox, listContainer) {
     let title = titleBox.value.trim();
     let category = categoryBox.value.trim() || 'General';
     let date = dateBox.value;
@@ -16,29 +15,35 @@ export function addTask(titleBox, categoryBox, dateBox, priorityBox,
             description: description
         };
 
-        const taskContent = `${title} (${category}/${dateBox}/${priority})`;
-        const li = document.createElement("li");
-        const span = document.createElement("span");
-
-        li.textContent = taskContent;
-        span.innerHTML = "\u00d7";
-        li.appendChild(span);
-        listContainer.appendChild(li);
-        saveTask(listContainer, task);
+        saveTask(task);
 
         titleBox.value = '';
         categoryBox.value = '';
         descriptionBox.value = '';
+
+        showTask(listContainer);
     }
 }
 
-export function saveTask(listContainer, task) {
+export function saveTask(task) {
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.push(task); // Add the new task
+    tasks.push(task);
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-export function showTask() {
-    const listContainer = document.getElementById("list-container");
-    listContainer.innerHTML = localStorage.getItem("data") || "";
+export function showTask(listContainer) {
+    listContainer.innerHTML = '';
+
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.forEach(task => {
+        const li = document.createElement("li");
+        const taskContent = `${task.title} (${task.category}/${task.date}/${task.priority})`;
+        const span = document.createElement("span");
+        
+        li.textContent = taskContent;
+        li.setAttribute("data-description", task.description);
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
+        listContainer.appendChild(li);
+    });
 }
