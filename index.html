@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <h1>To-Do List</h1>
+            <div class="row-container">
+                <div class="row">
+                    <input type="text" id="title-box" maxlength=40 placeholder="Title">
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <input type="text" id="category-box" list="categories" 
+                        maxlength=10 placeholder="General">
+                        <datalist id="categories">
+                            <option value="General">
+                            <option value="Home">
+                            <option value="Study">
+                            <option value="Work">
+                            <option value="Others">
+                        </datalist>
+                    </div>
+                    <div class="column">
+                        <input type="date" id="date-box" value="2026-01-31">
+                    </div>
+                    <div class="column">
+                        <select id="priority-box">
+                            <option value="!">!</option>
+                            <option value="!!" selected>!!</option>
+                            <option value="!!!">!!!</option>
+                        </select>
+                    </div>
+                    <div class="column"><button>+</button></div>
+                </div>
+                <div class="row">
+                    <input type="text" id="description-box" 
+                    maxlength=40 placeholder="Description">
+                </div>
+            </div>
+            <div class="search-container">
+                <div class="row">
+                    <div class="column">
+                        <input type="text" id="search-category-box" list="categories" 
+                        maxlength=10 placeholder="?">
+                        <datalist id="categories">
+                            <option value="General">
+                            <option value="Home">
+                            <option value="Study">
+                            <option value="Work">
+                            <option value="Others">
+                        </datalist>
+                    </div>
+                    <div class="column">
+                        <input type="date" id="search-date-box">
+                    </div>
+                    <div class="column">
+                        <select id="search-priority-box">
+                            <option value="?" selected>?</option>
+                            <option value="!">!</option>
+                            <option value="!!">!!</option>
+                            <option value="!!!">!!!</option>
+                        </select>
+                    </div>
+                    <button id="search-button">→</button>
+                </div>
+            </div>
+            <ul id="list-container"></ul>
+        </div>
+    </div>
+</body>
+</html>
