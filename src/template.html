@@ -9,20 +9,31 @@
     <div class="container">
         <div class="todo-app">
             <h1>To-Do List</h1>
-            <div class="row">
-                <input type="text" id="input-box" placeholder="Add your task">
-                <select id="priority-select">
-                    <option value="!">!</option>
-                    <option value="!!" selected>!!</option>
-                    <option value="!!!">!!!</option>
-                </select>
-                <button>+</button>
+            <div class="row-container">
+                <div class="row">
+                    <input type="text" id="input-box" placeholder="Title">
+                    <select id="priority-select">
+                        <option value="!">!</option>
+                        <option value="!!" selected>!!</option>
+                        <option value="!!!">!!!</option>
+                    </select>
+                    <button>+</button>
+                </div>
+                <div class="row">
+                    <input type="text" id="category-box" list="categories" placeholder="General">
+                    <datalist id="categories">
+                        <option value="General">
+                        <option value="Home">
+                        <option value="Study">
+                        <option value="Work">
+                        <option value="Others">
+                    </datalist>
+                </div>
+                <div class="row">
+                    <input type="text" id="description-box" placeholder="Description">
+                </div>
             </div>
-            <ul id="list-container">
-                <!-- <li class="checked">Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li> -->
-            </ul>
+            <ul id="list-container"></ul>
         </div>
     </div>
 </body>

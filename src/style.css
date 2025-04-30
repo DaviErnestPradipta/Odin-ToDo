@@ -36,44 +36,57 @@
     font-size: calc(var(--scale-size) * 2);
 }
 
+.row-container {
+    margin-bottom: var(--scale-size);
+}
+
 .row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: var(--first-color);
     padding-left: var(--scale-size);
-    margin-bottom: var(--scale-size);
+    height: calc(var(--scale-size) * 3);
+}
+
+.row:nth-child(2) {
+    background: white;
+}
+
+.row:nth-child(2) input,
+.row:nth-child(2) input::placeholder {
+    color: var(--first-color);
+}
+
+input, select, button {
+    border: none;
+    outline: none;
+    height: 100%;
+    padding: 0 var(--scale-size);
 }
 
 input {
     flex-grow: 1;
-    border: none;
-    outline: none;
     background: transparent;
-    padding: calc(var(--scale-size) / 2);
-    color: white;
 }
 
-input::placeholder {
+input, input::placeholder {
     color: white;
 }
 
 select, button {
-    border: none;
-    outline: none;
-    padding: var(--scale-size);
     cursor: pointer;
 }
 
 select {
     width: calc(var(--scale-size) * 4);
-    height: 100%;
     background: white;
     color: var(--first-color);
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
 }
+
 
 button {
     background: var(--first-color);
