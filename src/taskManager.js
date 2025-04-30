@@ -46,20 +46,3 @@ export function filterTasks({ category, date, priority }) {
         return categoryMatch && dateMatch && priorityMatch;
     });
 }
-
-export function renderTasks(tasks) {
-    const listContainer = document.getElementById("list-container");
-    listContainer.innerHTML = '';
-
-    tasks.forEach(task => {
-        const li = document.createElement("li");
-        const taskContent = `${task.title} (${task.category}/${task.date}/${task.priority})`;
-        const span = document.createElement("span");
-
-        li.textContent = taskContent;
-        li.setAttribute("data-description", task.description);
-        span.innerHTML = "\u00d7";
-        li.appendChild(span);
-        listContainer.appendChild(li);
-    });
-}

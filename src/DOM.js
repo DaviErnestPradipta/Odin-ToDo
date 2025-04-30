@@ -1,6 +1,5 @@
 import {
     addTask,
-    renderTasks,
     getAllTasks,
     deleteTaskByIdentifier,
     filterTasks
@@ -31,7 +30,6 @@ export function setupUI() {
             description: descriptionBox.value
         });
 
-        // Clear form inputs
         titleBox.value = '';
         categoryBox.value = '';
         descriptionBox.value = '';
@@ -68,5 +66,22 @@ export function setupUI() {
         });
 
         renderTasks(filtered);
+    });
+}
+
+function renderTasks(tasks) {
+    const listContainer = document.getElementById("list-container");
+    listContainer.innerHTML = '';
+
+    tasks.forEach(task => {
+        const li = document.createElement("li");
+        const taskContent = `${task.title} (${task.category}/${task.date}/${task.priority})`;
+        const span = document.createElement("span");
+
+        li.textContent = taskContent;
+        li.setAttribute("data-description", task.description);
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
+        listContainer.appendChild(li);
     });
 }
