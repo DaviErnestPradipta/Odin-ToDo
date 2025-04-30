@@ -46,23 +46,38 @@
 }
 
 input {
+    flex-grow: 1;
     border: none;
     outline: none;
     background: transparent;
     padding: calc(var(--scale-size) / 2);
-}
-
-input, input::placeholder {
     color: white;
 }
 
-button {
+input::placeholder {
+    color: white;
+}
+
+select, button {
     border: none;
     outline: none;
     padding: var(--scale-size);
-    background: black;
-    color: white;
     cursor: pointer;
+}
+
+select {
+    width: calc(var(--scale-size) * 4);
+    height: 100%;
+    background: white;
+    color: var(--first-color);
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+button {
+    background: var(--first-color);
+    color: white;
 }
 
 ul li {
