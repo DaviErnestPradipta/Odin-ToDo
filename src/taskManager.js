@@ -21,7 +21,7 @@ export function addTask(titleBox, categoryBox, dateBox, priorityBox, description
         categoryBox.value = '';
         descriptionBox.value = '';
 
-        showTask(listContainer);
+        showTask();
     }
 }
 
@@ -31,7 +31,8 @@ export function saveTask(task) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-export function showTask(listContainer) {
+export function showTask() {
+    const listContainer = document.getElementById("list-container");
     listContainer.innerHTML = '';
 
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
