@@ -34,6 +34,7 @@
     align-items: center;
     margin-bottom: var(--scale-size);
     font-size: calc(var(--scale-size) * 2);
+    color: var(--first-color);
 }
 
 .row-container {
@@ -53,7 +54,8 @@
 }
 
 .row:nth-child(even) input,
-.row:nth-child(even) input::placeholder {
+.row:nth-child(even) input::placeholder,
+#search-category-box::placeholder {
     color: var(--first-color);
 }
 
@@ -79,7 +81,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     -webkit-appearance: none;
 }
 
-input[type="date"], select {
+input[type="date"], select, #search-category-box {
     background: white;
     color: var(--first-color);
 }
@@ -114,6 +116,7 @@ ul li {
     user-select: none;
     cursor: pointer;
     position: relative;
+    color: var(--first-color);
 }
 
 ul li.checked {
