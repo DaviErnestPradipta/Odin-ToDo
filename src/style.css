@@ -134,3 +134,9 @@ ul li span:hover {
     background: var(--first-color);
     color: white;
 }
+
+.description {
+    margin-top: var(--scale-size);
+    font-size: calc(var(--scale-size) * 3 / 4);
+    color: var(--first-color);
+}

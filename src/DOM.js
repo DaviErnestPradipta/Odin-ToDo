@@ -20,8 +20,16 @@ export function setupUI() {
 
         if (e.target.tagName === "LI") {
             const description = e.target.getAttribute("data-description");
-            if (description) alert(`Description: ${description}`);
-            // Change the alert to something else
+            if (description) {
+                const existing = e.target.querySelector(".description");
+                if (existing) existing.remove();
+                else {
+                    const descDiv = document.createElement("div");
+                    descDiv.className = "description";
+                    descDiv.textContent = description;
+                    e.target.appendChild(descDiv);
+                }
+            }            
         } 
         else if (e.target.tagName === "SPAN") {
             const parent = e.target.parentElement;

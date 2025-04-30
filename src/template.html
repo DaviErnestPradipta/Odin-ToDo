@@ -11,11 +11,12 @@
             <h1>To-Do List</h1>
             <div class="row-container">
                 <div class="row">
-                    <input type="text" id="title-box" placeholder="Title">
+                    <input type="text" id="title-box" maxlength=40 placeholder="Title">
                 </div>
                 <div class="row">
                     <div class="column">
-                        <input type="text" id="category-box" list="categories" placeholder="General">
+                        <input type="text" id="category-box" list="categories" 
+                        maxlength=10 placeholder="General">
                         <datalist id="categories">
                             <option value="General">
                             <option value="Home">
@@ -37,7 +38,35 @@
                     <div class="column"><button>+</button></div>
                 </div>
                 <div class="row">
-                    <input type="text" id="description-box" placeholder="Description">
+                    <input type="text" id="description-box" 
+                    maxlength=40 placeholder="Description">
+                </div>
+            </div>
+            <div class="search-container">
+                <div class="row">
+                    <div class="column">
+                        <input type="text" id="category-box" list="categories" 
+                        maxlength=10 placeholder="Category">
+                        <datalist id="categories">
+                            <option value="General">
+                            <option value="Home">
+                            <option value="Study">
+                            <option value="Work">
+                            <option value="Others">
+                        </datalist>
+                    </div>
+                    <div class="column">
+                        <input type="date" id="date-box">
+                    </div>
+                    <div class="column">
+                        <select id="priority-box">
+                            <option value="?" selected>?</option>
+                            <option value="!">!</option>
+                            <option value="!!">!!</option>
+                            <option value="!!!">!!!</option>
+                        </select>
+                    </div>
+                    <div class="column"><button>→</button></div>
                 </div>
             </div>
             <ul id="list-container"></ul>
