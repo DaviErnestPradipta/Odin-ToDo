@@ -1,39 +1,50 @@
-export function addTask(titleBox, categoryBox, dateBox, priorityBox, descriptionBox) {
-    let title = titleBox.value.trim();
-    let category = categoryBox.value.trim() || 'General';
-    let date = dateBox.value;
-    let priority = priorityBox.value;
-    let description = descriptionBox.value.trim();
-
-    if (title === '') alert("Got nothing to do?");
-    else {
-        const task = {
-            title: title,
-            category: category,
-            date: date,
-            priority: priority,
-            description: description
-        };
-
-        saveTask(task);
-
-        titleBox.value = '';
-        categoryBox.value = '';
-        descriptionBox.value = '';
-
-        showTask();
+export function addTask({ title, category, date, priority, description }) {
+    if (!title.trim()) {
+        alert("Got nothing to do?");
+        return;
     }
+
+    const task = {
+        title: title.trim(),
+        category: category.trim() || 'General',
+        date,
+        priority,
+        description: description.trim()
+    };
+
+    saveTask(task);
 }
 
 export function saveTask(task) {
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     tasks.push(task);
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-export function showTask() {
-    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    renderTasks(tasks);
+export function getAllTasks() {
+    return JSON.parse(localStorage.getItem("tasks")) || [];
+}
+
+export function deleteTaskByIdentifier(identifier) {
+    const tasks = getAllTasks();
+    const index = tasks.findIndex(task =>
+        `${task.title} (${task.category}/${task.date}/${task.priority})` === identifier
+    );
+    if (index > -1) {
+        tasks.splice(index, 1);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+}
+
+export function filterTasks({ category, date, priority }) {
+    const tasks = getAllTasks();
+
+    return tasks.filter(task => {
+        const categoryMatch = category === '' || category === '?' || task.category === category;
+        const dateMatch = date === '' || task.date === date;
+        const priorityMatch = priority === '?' || task.priority === priority;
+        return categoryMatch && dateMatch && priorityMatch;
+    });
 }
 
 export function renderTasks(tasks) {
@@ -44,7 +55,7 @@ export function renderTasks(tasks) {
         const li = document.createElement("li");
         const taskContent = `${task.title} (${task.category}/${task.date}/${task.priority})`;
         const span = document.createElement("span");
-        
+
         li.textContent = taskContent;
         li.setAttribute("data-description", task.description);
         span.innerHTML = "\u00d7";
