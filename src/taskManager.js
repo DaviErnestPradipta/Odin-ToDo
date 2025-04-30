@@ -1,4 +1,4 @@
-export function addTask(titleBox, categoryBox, dateBox, priorityBox, descriptionBox, listContainer) {
+export function addTask(titleBox, categoryBox, dateBox, priorityBox, descriptionBox) {
     let title = titleBox.value.trim();
     let category = categoryBox.value.trim() || 'General';
     let date = dateBox.value;

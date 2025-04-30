@@ -7,12 +7,16 @@ export function setupUI() {
     const priorityBox = document.getElementById("priority-box");
     const addButton = document.querySelector("button");
     const descriptionBox = document.getElementById("description-box");
+    const searchCategoryBox = document.getElementById("search-category-box");
+    const searchDateBox = document.getElementById("search-date-box");
+    const searchPriorityBox = document.getElementById("search-priority-box");
+    const searchButton = document.getElementById("search-button");
     const listContainer = document.getElementById("list-container");
 
     showTask();
 
     addButton.addEventListener("click", () =>
-        addTask(titleBox, categoryBox, dateBox, priorityBox, descriptionBox, listContainer)
+        addTask(titleBox, categoryBox, dateBox, priorityBox, descriptionBox)
     );
 
     listContainer.addEventListener("click", function(e) {
@@ -44,12 +48,6 @@ export function setupUI() {
             }
         }
     }, false);
-
-    // Add here
-    const searchCategoryBox = document.getElementById("search-category-box");
-    const searchDateBox = document.getElementById("search-date-box");
-    const searchPriorityBox = document.getElementById("search-priority-box");
-    const searchButton = document.getElementById("search-button");
 
     searchButton.addEventListener("click", () => {
         const category = searchCategoryBox.value.trim();
