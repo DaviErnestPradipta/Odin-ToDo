@@ -1,33 +1,39 @@
 :root {
     --first-color: rgb(100, 150, 100);
+    --scale-size: 1rem;
 }
 
 * {
     margin: 0;
     padding: 0;
     font-family: 'Courier New', Courier, monospace;
+    font-size: var(--scale-size);
     box-sizing: border-box;
 }
 
 .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     min-height: 100vh;
     background: var(--first-color);
-    padding: 10px;
+    padding: var(--scale-size);
 }
 
 .todo-app {
     width: 100%;
-    max-width: 540px;
+    max-width: 500px;
     background: white;
-    margin: 100px auto 20px;
-    padding: 40px 30px 70px;
+    padding: calc(var(--scale-size) * 2);
 }
 
 .todo-app h1 {
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: var(--scale-size);
+    font-size: calc(var(--scale-size) * 2);
 }
 
 .row {
@@ -35,49 +41,36 @@
     align-items: center;
     justify-content: space-between;
     background: var(--first-color);
-    padding-left: 20px;
-    margin-bottom: 25px;
+    padding-left: var(--scale-size);
+    margin-bottom: var(--scale-size);
 }
 
 input {
-    flex: 1;
     border: none;
     outline: none;
     background: transparent;
-    padding: 10px;
-    font-weight: 14px;
-    color: white;
+    padding: calc(var(--scale-size) / 2);
 }
 
-input::placeholder {
+input, input::placeholder {
     color: white;
 }
 
 button {
     border: none;
     outline: none;
-    padding: 16px 50px;
+    padding: var(--scale-size);
     background: black;
     color: white;
-    font-size: 16px;
     cursor: pointer;
 }
 
 ul li {
     list-style: none;
-    font-size: 17px;
-    padding: 12px 24px;
+    padding: var(--scale-size);
     user-select: none;
     cursor: pointer;
     position: relative;
-}
-
-ul li::before {
-    position: absolute;
-    height: 28px;
-    width: 28px;
-    border-radius: 50%;
-    top: 12px;
 }
 
 ul li.checked {
@@ -86,14 +79,14 @@ ul li.checked {
 
 ul li span {
     position: absolute; 
-    right: 10px;
+    right: calc(var(--scale-size) / 2);
     top: 50%;
     transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    font-size: 22px;
+    width: calc(var(--scale-size) * 2);
+    height: calc(var(--scale-size) * 2);
+    font-size: var(--scale-size);
+    line-height: calc(var(--scale-size) * 2);
     color: var(--first-color);
-    line-height: 30px;
     text-align: center;
     cursor: pointer;
 }
