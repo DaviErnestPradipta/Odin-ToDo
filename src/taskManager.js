@@ -1,14 +1,17 @@
-export function addTask(inputBox, listContainer) {
-    if (inputBox.value.trim() === '') {
+export function addTask(titleBox, categoryBox, dateBox, priorityBox, 
+    descriptionBox, listContainer) {
+    if (titleBox.value.trim() === '') {
         alert("Got nothing to do?");
-    } else {
+    }
+    else {
         const li = document.createElement("li");
-        li.textContent = inputBox.value;
+        const taskContent = `${titleBox.value} (${categoryBox.value}/${dateBox.value}/${priorityBox.value})`;
+        li.textContent = taskContent;
         const span = document.createElement("span");
         span.innerHTML = "\u00d7";
         li.appendChild(span);
         listContainer.appendChild(li);
-        inputBox.value = '';
+        titleBox.value = '';
         saveTask(listContainer);
     }
 }
