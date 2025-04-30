@@ -8,7 +8,6 @@ export function setupUI() {
     const addButton = document.querySelector("button");
     const descriptionBox = document.getElementById("category-box");
     const listContainer = document.getElementById("list-container");
-    
 
     addButton.addEventListener("click", () => 
         addTask(titleBox, categoryBox, dateBox, priorityBox, 
@@ -17,6 +16,11 @@ export function setupUI() {
     listContainer.addEventListener("click", function(e) {
         if (e.target.tagName === "LI") {
             e.target.classList.toggle("checked");
+            // Show description when clicked
+            const description = e.target.getAttribute("data-description");
+            if (description) {
+                alert(`Description: ${description}`);
+            }
             saveTask(listContainer);
         }
         else if (e.target.tagName === "SPAN") {

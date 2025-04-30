@@ -1,28 +1,41 @@
 export function addTask(titleBox, categoryBox, dateBox, priorityBox, 
     descriptionBox, listContainer) {
-    let title = titleBox.value;
+    let title = titleBox.value.trim();
     let category = categoryBox.value.trim() || 'General';
+    let date = dateBox.value;
+    let priority = priorityBox.value;
+    let description = descriptionBox.value.trim();
 
-    if (title.trim() === '') alert("Got nothing to do?");
+    if (title === '') alert("Got nothing to do?");
     else {
-        const taskContent = `${title} (${category}/${dateBox.value}/${priorityBox.value})`;
+        const task = {
+            title: title,
+            category: category,
+            date: date,
+            priority: priority,
+            description: description
+        };
+
+        const taskContent = `${title} (${category}/${dateBox}/${priority})`;
         const li = document.createElement("li");
         const span = document.createElement("span");
-        
+
         li.textContent = taskContent;
         span.innerHTML = "\u00d7";
         li.appendChild(span);
         listContainer.appendChild(li);
+        saveTask(listContainer, task);
 
-        title = '';
-        category = '';
-
-        saveTask(listContainer);
+        titleBox.value = '';
+        categoryBox.value = '';
+        descriptionBox.value = '';
     }
 }
 
-export function saveTask(listContainer) {
-    localStorage.setItem("data", listContainer.innerHTML);
+export function saveTask(listContainer, task) {
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.push(task); // Add the new task
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 export function showTask() {
